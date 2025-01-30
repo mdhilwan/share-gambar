@@ -3,13 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "clean:install": "npx rimraf node_modules && npm i",
+    "dev": "npx -y concurrently -c \"auto\" \"npm:dev:*\"",
+    "dev:app": "next dev --turbopack --experimental-https -p 443",
+    "dev:api": "nodemon api",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
     "next": "15.1.6",
+    "nodemon": "^3.1.9",
+    "path": "^0.12.7",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
